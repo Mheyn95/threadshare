@@ -7,35 +7,42 @@ import logo from "../../assets/threadSHARE.png";
 import { QUERY_ALL_DONATIONS, QUERY_ALL_ORDERS } from "../../utils/queries";
 
 function Charity() {
-  // getting query data needed for goal tracker
-  const { loading: donationLoading, data: donationData } = useQuery(
-    QUERY_ALL_DONATIONS
-  );
-  const { loading: orderLoading, data: orderData } = useQuery(QUERY_ALL_ORDERS);
-  // setting up constants for goal tracker
   const goal = 1000;
   let orderTotal = 0;
   let toGoal;
-  if (!donationLoading && !orderLoading) {
-    console.log(donationData);
-    // loop to get total amount spent through orders
-    for (let i = 0; i < orderData.orders.length; i++) {
-      let products = orderData.orders[i].products;
-      for (let j = 0; j < products.length; j++) {
-        if (products[j].price === null) {
-          products[j].price = 0;
+  function populateCharity() {
+    // getting query data needed for goal tracker
+    const { loading: donationLoading, data: donationData } = useQuery(
+      QUERY_ALL_DONATIONS
+    );
+    const { loading: orderLoading, data: orderData } = useQuery(
+      QUERY_ALL_ORDERS
+    );
+    // setting up constants for goal tracker
+
+    if (!donationLoading && !orderLoading) {
+      console.log(donationData);
+      // loop to get total amount spent through orders
+      for (let i = 0; i < orderData.orders.length; i++) {
+        let products = orderData.orders[i].products;
+        for (let j = 0; j < products.length; j++) {
+          if (products[j].price === null) {
+            products[j].price = 0;
+          }
+          if (products[j].quantity === null) {
+            products[j].quantity = 0;
+          }
+          orderTotal = orderTotal + products[j].price * products[j].quantity;
         }
-        if (products[j].quantity === null) {
-          products[j].quantity = 0;
-        }
-        orderTotal = orderTotal + products[j].price * products[j].quantity;
       }
+      // formula that finds the amount until the next goal
+      toGoal = orderTotal - goal * donationData.donations.length;
+      const progressBar = (toGoal / goal) * 100;
+      document.getElementById("progress").style.width = `${progressBar}%`;
     }
-    // formula that finds the amount until the next goal
-    toGoal = orderTotal - goal * donationData.donations.length;
-    const progressBar = (toGoal / goal) * 100;
-    document.getElementById("progress").style.width = `${progressBar}%`;
   }
+
+  populateCharity();
 
   return (
     <div className="charity-container">
