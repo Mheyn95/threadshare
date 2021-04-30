@@ -21,7 +21,9 @@ function SuccessfulPurchase() {
                 });
             }
 
-            // TO DO: DO WE WANT A TIMER?
+            setTimeout(() => {
+                window.location.assign('/');
+            }, 3000);
         }
 
         saveOrder();

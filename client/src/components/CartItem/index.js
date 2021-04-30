@@ -5,7 +5,6 @@ import { idbPromise } from "../../utils/helpers";
 
 const CartItem = ({ item }) => {
 
-    
     const dispatch = useDispatch();
 
     const removeFromCart = item => {
@@ -33,17 +32,17 @@ const CartItem = ({ item }) => {
             });
 
             idbPromise('cart', 'put', { ...item, purchaseQuantity: parseInt(value) });
-            
+
         }
     };
 
     return (
         <div className="flex-row">
             <div>
-                <img
+                {/* <img
                     src={`/images/${item.image}`}
                     alt=""
-                />
+                /> */}
             </div>
             <div>
                 <div>{item.name}, ${item.price}</div>
@@ -59,9 +58,7 @@ const CartItem = ({ item }) => {
                         role="img"
                         aria-label="trash"
                         onClick={() => removeFromCart(item)}
-                    >
-                        🗑️
-          </span>
+                    > [X]</span>
                 </div>
             </div>
         </div>

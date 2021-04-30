@@ -65,18 +65,16 @@ const Cart = () => {
 
     if (!state.cartOpen) {
         return (
-            <div className="cart-closed" onClick={toggleCart}>
-                <span
-                    role="img"
-                    aria-label="trash">🛒</span>
+            <div className="top-nav-item cart-closed" onClick={toggleCart}>
+                    <i class="fa fa-shopping-cart cart-color"></i>
             </div>
         );
     }
 
     return (
         <div className="cart">
-            <div className="close" onClick={toggleCart}>[close]</div>
-            <h2>Shopping Cart</h2>
+            <div className="close" onClick={toggleCart}>X</div>
+            <h2>Cart</h2>
             {state.cart.length ? (
                 <div>
                     {state.cart.map(item => (
@@ -97,11 +95,11 @@ const Cart = () => {
                     </div>
                 </div>
             ) : (
-                <h3>
-                    <span role="img" aria-label="shocked">
+                <h3 className="nothing-cart">
+                    {/* <span role="img" aria-label="shocked">
                         😱
-                </span>
-                You haven't added anything to your cart yet!
+                </span> */}
+                Empty
                 </h3>
             )}
         </div>
