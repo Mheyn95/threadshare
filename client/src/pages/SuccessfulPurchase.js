@@ -32,7 +32,7 @@ function SuccessfulPurchase() {
     return (
         <div>
             {/* Make sure to have styling/nav bar on top */}
-            <h2>Thank you for support threadShare!</h2>
+            <h2 >Thank you for support threadShare!</h2>
 
         </div>
     )
