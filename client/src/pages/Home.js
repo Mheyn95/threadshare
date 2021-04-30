@@ -9,7 +9,7 @@ const Home = () => {
     <div>
       {!Auth.loggedIn() && <Login />}
       {Auth.loggedIn() && <Welcome />}
-      {/* <Cart /> */}
+  
     </div>
   );
 };

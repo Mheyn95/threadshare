@@ -4,7 +4,50 @@ import sweatshirtImage from '../assets/sweatshirtImage.jpg'
 import hoodieImage from '../assets/hoodieImage.jpg'
 import jacketImage from '../assets/jacketImage.jpg'
 
+import { useDispatch, useSelector } from "react-redux";
+
+import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../utils/actions";
+import { idbPromise } from "../utils/helpers";
+
+import {QUERY_PRODUCT} from "../utils/queries";
+
 function Products() {
+
+    // const dispatch = useDispatch();
+    // const state = useSelector(state => state);
+
+    // const {
+    //     _id,
+    //     customText,
+    //     style,
+    //     color,
+    //     size,
+    //     quantity,
+    // } = item;
+
+    // const { cart } = state;
+
+    // const addToCart = () => {
+    //     const itemInCart = cart.find((cartItem) => cartItem._id === _id)
+    //     if (itemInCart) {
+    //         dispatch({
+    //             type: UPDATE_CART_QUANTITY,
+    //             _id: _id,
+    //             purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
+    //         });
+    //         idbPromise('cart', 'put', {
+    //             ...itemInCart,
+    //             purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
+    //         });
+    //     } else {
+    //         dispatch({
+    //             type: ADD_TO_CART,
+    //             product: { ...item, purchaseQuantity: 1 }
+    //         });
+    //         idbPromise('cart', 'put', { ...item, purchaseQuantity: 1 });
+    //     }
+    // }
+
     let product = '';
     let price = 0;
     let image = '';
@@ -94,6 +137,7 @@ function Products() {
 
                         <div className="button-row">
                             <button className="btn" type="submit">Add To Cart</button>
+                            {/* <button className="btn" type="submit" onClick={addToCart}>Add To Cart</button> */}
                         </div>
                     </div>
                 </form>

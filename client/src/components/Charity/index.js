@@ -56,6 +56,7 @@ function Charity() {
           <div className="dollars-acc">
             total: <span id="to-goal">${toGoal}</span>
           </div>
+          {/* NEEDS TO HAVE A onclick={addtoCart} or redirect to a page where they can fill out amount they want to donate */}
           <button className="donate-now">Donate now</button>
         </div>
       </div>
