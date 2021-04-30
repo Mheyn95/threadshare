@@ -84,6 +84,7 @@ function Products() {
                     <div className="first-product-container">
                         <div className="product-options">
                             <div className="product-options-label">Style</div>
+                            {/* Need something for {product}-style */}
                             <select className="select-styling">
                                 <option value=""> Select one:</option>
                                 <option value="0"> Men's</option>
@@ -92,6 +93,7 @@ function Products() {
                         </div>
                         
                         <div className="product-options">
+                            {/* Need something for {product}-color */}
                             <div className="product-options-label">Color</div>
                             <select className="select-styling">
                                 <option value=""> Select one:</option>
@@ -106,6 +108,7 @@ function Products() {
                         </div>
 
                         <div className="product-options">
+                            {/* Need something for {product}-size */}
                             <div className="product-options-label">Size</div>
                             <select className="select-styling">
                                 <option value=""> Select one:</option>
@@ -123,10 +126,13 @@ function Products() {
                         <div className="product-options-text-container">
                             <label className="product-options-label">Text for Shirt</label>
                             <input className="product-input" id="t-shirt-text" />
+                            {/* <input className="product-input" id="{product}-text" /> */}
                         </div>
 
                         <div>
                             <label className="product-options-label">Quantity</label>
+                            {/* <input className="product-input" type="number" min="0" step="1" id="{product}-quantity" /> */}
+                            {/* need err if number is not positive, or change to a select option, versus text area */}
                             <input className="product-input" id="t-shirt-quantity" />
                         </div>
 
@@ -138,6 +144,8 @@ function Products() {
                         <div className="button-row">
                             <button className="btn" type="submit">Add To Cart</button>
                             {/* <button className="btn" type="submit" onClick={addToCart}>Add To Cart</button> */}
+                        
+                        {/* Need validation that all fields are filled out */}
                         </div>
                     </div>
                 </form>
