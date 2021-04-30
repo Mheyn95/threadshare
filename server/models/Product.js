@@ -3,17 +3,12 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const productSchema = new Schema({
-  text: {
+  customText: {
     type: String,
   },
   size: {
     type: String,
     required: true,
-  },
-  price: {
-    type: Number,
-    required: true,
-    min: 0.99,
   },
   quantity: {
     type: Number,
@@ -25,9 +20,16 @@ const productSchema = new Schema({
     type: String,
     required: true,
   },
+  style: {
+    type: String,
+    required: true,
+  },
   category: {
-    type: Schema.Types.ObjectId,
-    ref: "Category",
+    type: String,
+    required: true,
+  },
+  price: {
+    type: Number,
     required: true,
   },
 });
