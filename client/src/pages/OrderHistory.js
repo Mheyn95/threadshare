@@ -18,10 +18,9 @@ function OrderHistory() {
     return (
         <div>
             <h2>Order history for {user.firstName} </h2>
-            {/* Need to input the rest of the code for objects from order history */}
+
             {user ? (
                 <>
-                   
                     {user.orders.map((order) => (
                         <div key={order._id} className="my-2">
                             <h3>{new Date(parseInt(order.purchaseDate)).toLocaleDateString()}</h3>
