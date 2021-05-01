@@ -47,6 +47,10 @@
   transform: rotate(8deg);
 }
 
+.cart-color:hover {
+  color: var(--accent-color);
+}
+
 .cart img {
   width: 70px;
   margin-right: 1rem;
@@ -69,10 +73,14 @@
     max-width: 100%;
     max-height: auto;
     box-shadow: none;
-    background-color: inherit;
+    background-color: var(--accent-color);
+    border-bottom-left-radius: 0;
   }
   .cart-closed {
     position: relative;
     margin: 0 auto;
+  }
+  .cart-closed:hover {
+    transform: none;
   }
 }

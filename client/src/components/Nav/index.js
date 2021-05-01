@@ -5,14 +5,14 @@ import { Link } from "react-router-dom";
 
 function Nav() {
   return (
-      <nav className='nav-flex'>
-        <div className='logo-styling'>
-          <a className="logo-styling" href='/'>
-            THRE<span className="logo-delta">&#9651;</span>D<span className="logo-span"></span><span
-              className="logo-s">$</span>H<span className="logo-delta">&#9651;</span>RE
+    <nav className='nav-flex'>
+      <div className='logo-styling'>
+        <a className="logo-styling" href='/'>
+          THRE<span className="logo-delta">&#9651;</span>D<span className="logo-span"></span><span
+            className="logo-s">$</span>H<span className="logo-delta">&#9651;</span>RE
           </a>
       </div>
-      <div>
+      <div className="nav-bar-items">
         <ul className='top-nav-container'>
           {Auth.loggedIn() &&
             <li className='top-nav-item'>
@@ -26,22 +26,22 @@ function Nav() {
                 </a>
             </li>
           }
-          
-            {!Auth.loggedIn() &&
-                <li className='top-nav-item'>
-                  <Link className='top-nav-item' to="/signup">Sign Up</Link>
-                </li>
-              }
-              {!Auth.loggedIn() &&
-                <li className='top-nav-item'>
-                  <Link className='top-nav-item' to="/login">Login</Link>
-                </li>
-              }
-              <Cart/>
-           
-          </ul>
-        </div>
-      </nav>
+
+          {!Auth.loggedIn() &&
+            <li className='top-nav-item'>
+              <Link className='top-nav-item' to="/signup">Sign Up</Link>
+            </li>
+          }
+          {!Auth.loggedIn() &&
+            <li className='top-nav-item'>
+              <Link className='top-nav-item' to="/login">Login</Link>
+            </li>
+          }
+          <Cart />
+
+        </ul>
+      </div>
+    </nav>
   );
 
 }
