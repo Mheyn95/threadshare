@@ -64,7 +64,7 @@ function SignUp(props) {
                 <div className='row'>
                     <label htmlFor="email">Email:</label>
                     <input
-                        placeholder="youremail@email.com"
+                        placeholder="name@email.com"
                         name="email"
                         type="email"
                         id="email"
@@ -74,13 +74,14 @@ function SignUp(props) {
                 <div className="row">
                     <label htmlFor="password">Password:</label>
                     <input
-                        placeholder="** Must contain 5 characters"
+                        placeholder="******"
                         name="password"
                         type="password"
                         id="password"
                         onChange={handleChange}
                     />
                 </div>
+                <div className="password-words">* Password must contain 5 characters</div>
                 <div className='button-row'>
                     <button className='btn' type="submit">Submit</button>
                 </div>

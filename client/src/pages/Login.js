@@ -42,7 +42,7 @@ function Login(props) {
                     <div className='row'>
                         <label htmlFor="email"> Email:</label>
                         <input
-                            placeholder="youremail@email.com"
+                            placeholder="name@email.com"
                             name="email"
                             type="email"
                             id="email"
@@ -52,7 +52,7 @@ function Login(props) {
                     <div className="row">
                         <label htmlFor="password">Password:</label>
                         <input
-                            placeholder="** Must contain 5 characters"
+                            placeholder="*****"
                             name="password"
                             type="password"
                             id="password"

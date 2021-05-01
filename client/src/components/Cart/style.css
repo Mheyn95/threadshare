@@ -82,5 +82,6 @@
   }
   .cart-closed:hover {
     transform: none;
+    color: var(--color-one);
   }
 }
