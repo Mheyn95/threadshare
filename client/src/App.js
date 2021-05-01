@@ -19,7 +19,7 @@ import SuccessfulPurchase from "./pages/SuccessfulPurchase";
 import OrderHistory from "./pages/OrderHistory";
 
 import Products from './pages/Products';
-import TShirts from "./pages/TShirts";
+// import TShirts from "./pages/TShirts";
 
 const client = new ApolloClient({
     request: (operation) => {
@@ -47,7 +47,7 @@ const client = new ApolloClient({
                 <Route exact path="/signup" component={Signup} />
                 <Route exact path="/successfulPurchase" component={SuccessfulPurchase} />
                 <Route exact path="/orderHistory" component={OrderHistory} />
-                <Route exact path="/tShirts" component={TShirts} />
+                <Route exact path="/tShirts" component={Products} />
                 <Route exact path="/sweatshirts" component={Products} />
                 <Route exact path="/hoodies" component={Products} />
                 <Route exact path="/jackets" component={Products} />
