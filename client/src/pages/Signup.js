@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/react-hooks";
 import Auth from "../utils/auth";
 import { ADD_USER } from "../utils/mutations";
+import ShareImage from "../assets/share.jpg";
 
 function SignUp(props) {
     const [formState, setFormState] = useState({
@@ -35,9 +36,10 @@ function SignUp(props) {
 
     // wrote skelton, but classNames and styling still needs to be done
     return (
+        <div className='home-styling'>
         <div className='sign-up'>
             <h2 className="sign-up-words">
-                Welcome to threadSHARE.
+                Welcome to threadSHARE.<br/>
                 Build your profile below.
             </h2>
             <form onSubmit={handleSignUpFormSubmit}>
@@ -86,7 +88,14 @@ function SignUp(props) {
                     <button className='btn' type="submit">Submit</button>
                 </div>
             </form>
-        </div>
+            </div>
+
+            <div>
+                <img className="home-image" src={ShareImage} alt="hands holding flower" />
+            </div>
+
+        
+    </div>
 
     );
 }
