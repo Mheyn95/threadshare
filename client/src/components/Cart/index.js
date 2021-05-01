@@ -66,7 +66,7 @@ const Cart = () => {
     if (!state.cartOpen) {
         return (
             <div className="top-nav-item cart-closed" onClick={toggleCart}>
-                    <i class="fa fa-shopping-cart cart-color"></i>
+                    <i className="fa fa-shopping-cart cart-color"></i>
             </div>
         );
     }

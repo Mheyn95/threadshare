@@ -19,6 +19,7 @@ import SuccessfulPurchase from "./pages/SuccessfulPurchase";
 import OrderHistory from "./pages/OrderHistory";
 
 import Products from './pages/Products';
+// import TShirts from "./pages/TShirts";
 
 const client = new ApolloClient({
     request: (operation) => {

@@ -13,40 +13,46 @@ import {QUERY_PRODUCT} from "../utils/queries";
 
 function Products() {
 
-    // const dispatch = useDispatch();
-    // const state = useSelector(state => state);
+    const dispatch = useDispatch();
+    const state = useSelector(state => state);
+    let item = [];
 
-    // const {
-    //     _id,
-    //     customText,
-    //     style,
-    //     color,
-    //     size,
-    //     quantity,
-    // } = item;
+    const {
+        _id,
+        customText,
+        style,
+        color,
+        size,
+        quantity,
+    } = item;
 
-    // const { cart } = state;
+    const { cart } = state;
 
-    // const addToCart = () => {
-    //     const itemInCart = cart.find((cartItem) => cartItem._id === _id)
-    //     if (itemInCart) {
-    //         dispatch({
-    //             type: UPDATE_CART_QUANTITY,
-    //             _id: _id,
-    //             purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
-    //         });
-    //         idbPromise('cart', 'put', {
-    //             ...itemInCart,
-    //             purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
-    //         });
-    //     } else {
-    //         dispatch({
-    //             type: ADD_TO_CART,
-    //             product: { ...item, purchaseQuantity: 1 }
-    //         });
-    //         idbPromise('cart', 'put', { ...item, purchaseQuantity: 1 });
-    //     }
-    // }
+    const addToCart = () => {
+        var productStyle = document.getElementById("productStyle").value;
+        var productColor = document.getElementById("productColor").value;
+        var productSize = document.getElementById("productSize").value;
+        var productText = document.getElementById("productColor").value;
+        var productQty = document.getElementById("productColor").value;
+        const itemInCart = cart.find((cartItem) => cartItem._id === _id)
+        if (itemInCart) {
+            dispatch({
+                type: UPDATE_CART_QUANTITY,
+                _id: _id,
+                purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
+            });
+            idbPromise('cart', 'put', {
+                ...itemInCart,
+                purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
+            });
+        } else {
+            dispatch({
+                type: ADD_TO_CART,
+                product: { ...item, purchaseQuantity: 1 }
+            });
+            idbPromise('cart', 'put', { ...item, purchaseQuantity: 1 });
+        }
+    }
 
     let product = '';
     let price = 0;
@@ -76,7 +82,7 @@ function Products() {
     return (
         <div className="product-page-container">
             <div>
-                <img className="product-img" src={image} alt="picture of sweatshirt" key={product}/>
+                <img className="product-img" src={image} alt={product} key={product}/>
             </div>
             <div>
                 <h1 className="product-name">{product}</h1>
@@ -85,39 +91,39 @@ function Products() {
                         <div className="product-options">
                             <div className="product-options-label">Style</div>
                             {/* Need something for {product}-style */}
-                            <select className="select-styling">
+                            <select className="select-styling" id='productStyle'>
                                 <option value=""> Select one:</option>
-                                <option value="0"> Men's</option>
-                                <option value="1"> Women's</option>
+                                <option value="Men's"> Men's</option>
+                                <option value="Women's"> Women's</option>
                             </select>
                         </div>
                         
                         <div className="product-options">
                             {/* Need something for {product}-color */}
                             <div className="product-options-label">Color</div>
-                            <select className="select-styling">
+                            <select className="select-styling" id='productColor'>
                                 <option value=""> Select one:</option>
-                                <option value="0"> Navy</option>
-                                <option value="1"> Olive Green</option>
-                                <option value="2"> Black</option>
-                                <option value="3"> White</option>
-                                <option value="4"> Gray</option>
-                                <option value="5"> Plum</option>
-                                <option value="6"> Red</option>
+                                <option value="Navy"> Navy</option>
+                                <option value="Olive Green"> Olive Green</option>
+                                <option value="Black"> Black</option>
+                                <option value="White"> White</option>
+                                <option value="Gray"> Gray</option>
+                                <option value="Plum"> Plum</option>
+                                <option value="Red"> Red</option>
                             </select>
                         </div>
 
                         <div className="product-options">
                             {/* Need something for {product}-size */}
                             <div className="product-options-label">Size</div>
-                            <select className="select-styling">
+                            <select className="select-styling" id='productSize'>
                                 <option value=""> Select one:</option>
-                                <option value="0"> XS</option>
-                                <option value="1"> S</option>
-                                <option value="2"> M</option>
-                                <option value="3"> L</option>
-                                <option value="4"> XL</option>
-                                <option value="5"> XXL</option>
+                                <option value="XS"> XS</option>
+                                <option value="S"> S</option>
+                                <option value="M"> M</option>
+                                <option value="L"> L</option>
+                                <option value="XL"> XL</option>
+                                <option value="XXL"> XXL</option>
                             </select>
                         </div>
                     </div>
@@ -125,24 +131,24 @@ function Products() {
                     <div className="second-product-container">
                         <div className="product-options-text-container">
                             <label className="product-options-label">Text for Shirt</label>
-                            <input className="product-input" id="t-shirt-text" />
+                            <input className="product-input" id="productText" />
                             {/* <input className="product-input" id="{product}-text" /> */}
                         </div>
 
                         <div>
                             <label className="product-options-label">Quantity</label>
-                            {/* <input className="product-input" type="number" min="0" step="1" id="{product}-quantity" /> */}
+                            <input className="product-input" type="number" min="0" step="1" id="productQty" />
                             {/* need err if number is not positive, or change to a select option, versus text area */}
-                            <input className="product-input" id="t-shirt-quantity" />
+                            {/* <input className="product-input" id="product-quantity" /> */}
                         </div>
 
                     </div>
 
                     <div className="third-product-container">
-                        <div className="product-price">Price: <span id="t-shirt-price">${price}</span></div>
+                        <div className="product-price">Price: <span id="product-price">${price}</span></div>
 
                         <div className="button-row">
-                            <button className="btn" type="submit">Add To Cart</button>
+                            <button className="btn" type="submit" onClick={addToCart}>Add To Cart</button>
                             {/* <button className="btn" type="submit" onClick={addToCart}>Add To Cart</button> */}
                         
                         {/* Need validation that all fields are filled out */}
