@@ -19,16 +19,6 @@ function Products() {
     const [errorMessage, setErrorMessage] = useState('');
     const { name, text, qty } = formState;
 
-    let item = [];
-
-    const {
-        _id,
-        customText,
-        style,
-        color,
-        size,
-        quantity,
-    } = item;
 
     const { cart } = state;
 
@@ -49,13 +39,41 @@ function Products() {
         var productStyle = document.getElementById("productStyle").value;
         var productColor = document.getElementById("productColor").value;
         var productSize = document.getElementById("productSize").value;
-        var productText = document.getElementById("productColor").value;
-        var productQty = document.getElementById("productColor").value;
+        var productText = document.getElementById("productText").value;
+        var productQty = document.getElementById("productQty").value;
+
+
+        // let item = [];
+
+
+        let item = {
+            // _id,
+            category: product,
+            customText: productText,
+            style: productStyle,
+            color:productColor,
+            size:productSize,
+            quantity:productQty,
+        };
+
+        // customText = productText;
+        // style = productStyle;
+        // color = productColor;
+        // size = productSize;
+        // quantity = productQty;
+        alert(item.color);
         
-        if (!productStyle && !productColor && !productSize && !productQty){
+
+    
+        
+        if (!productStyle || !productColor || !productSize || !productQty){
+            console.log("Need to have all categories");
+            // Style error message
+            setErrorMessage(`Please fill out all fields`);
             
         }else {
-            const itemInCart = cart.find((cartItem) => cartItem._id === _id)
+            const itemInCart = cart.find((item) => item._id === _id);
+            console.log(item);
             if (itemInCart) {
                 dispatch({
                     type: UPDATE_CART_QUANTITY,
@@ -111,7 +129,7 @@ function Products() {
                 <form>
                     <div className="first-product-container">
                         <div className="product-options">
-                            <div className="product-options-label">Style</div>
+                            <div className="product-options-label product-bold">Style</div>
                             {/* Need something for {product}-style */}
                             <select htmlFor='style' className="select-styling" id='productStyle' name='style' onBlur={handleChange}>
                                 <option value=""> Select one:</option>
@@ -122,7 +140,7 @@ function Products() {
                         
                         <div className="product-options">
                             {/* Need something for {product}-color */}
-                            <div className="product-options-label">Color</div>
+                            <div className="product-options-label product-bold">Color</div>
                             <select className="select-styling" id='productColor' name='color' onBlur={handleChange}>
                                 <option value=""> Select one:</option>
                                 <option value="Navy"> Navy</option>
@@ -137,7 +155,7 @@ function Products() {
 
                         <div className="product-options">
                             {/* Need something for {product}-size */}
-                            <div className="product-options-label">Size</div>
+                            <div className="product-options-label product-bold">Size</div>
                             <select className="select-styling" id='productSize' name='size' onBlur={handleChange}>
                                 <option value=""> Select one:</option>
                                 <option value="XS"> XS</option>
@@ -158,12 +176,16 @@ function Products() {
                         </div>
 
                         <div>
-                            <label className="product-options-label" htmlFor="qty">Quantity</label>
+                            <label className="product-options-label product-bold" htmlFor="qty">Quantity</label>
                             <input className="product-input" type="number" min="0" step="1" id="productQty" name='QTY' onBlur={handleChange}/>
                             {/* need err if number is not positive, or change to a select option, versus text area */}
                             {/* <input className="product-input" id="product-quantity" /> */}
                         </div>
 
+                    </div>
+                    {/* Need to style */}
+                    <div>
+                        Please fill out all ___ fields. 
                     </div>
 
                     {
