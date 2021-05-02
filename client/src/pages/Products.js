@@ -34,9 +34,7 @@ function Products() {
         
     };
 
-    const addProductFun = () => {
-        const [addProduct] = useMutation(ADD_PRODUCT);
-    }
+    const [addProduct] = useMutation(ADD_PRODUCT);
 
     const addToCart = (e) => {
         e.preventDefault();
@@ -55,7 +53,7 @@ function Products() {
 
 
         let item = {
-            _id: 1,
+            // _id: 1,
             category: product,
             customText: productText,
             style: productStyle,
@@ -72,7 +70,7 @@ function Products() {
         // quantity = productQty;
         // alert(item.color);
         
-
+        
     
         
         if (!productStyle || !productColor || !productSize || !productQty){
@@ -82,7 +80,10 @@ function Products() {
             
         }else {
             // _id++;
-            const itemInCart = cart.find((item) => item._id === _id);
+            // addTodo({ variables: { type: input.value } });
+            // addProduct({ variables: {item} });
+            
+            const itemInCart = cart.find((item) => item.category === _id);
             console.log(item);
             console.log(_id);
             if (itemInCart) {

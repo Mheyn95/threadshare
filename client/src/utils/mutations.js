@@ -23,7 +23,7 @@ export const ADD_PRODUCT = gql`
     $customText: String!
     $size: String!
     $quantity: Number!
-    &price: Number!
+    $price: Number!
   ) {
     addProduct(
       style: $style
