@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import tshirtImage from '../assets/t-shirt.png'
 import sweatshirtImage from '../assets/sweatshirtImage.jpg'
 import hoodieImage from '../assets/hoodieImage.jpg'
@@ -15,6 +15,10 @@ function Products() {
 
     const dispatch = useDispatch();
     const state = useSelector(state => state);
+    const [formState, setFormState] = useState({ style: '', color: '', size: '', qty: '' });
+    const [errorMessage, setErrorMessage] = useState('');
+    const { name, text, qty } = formState;
+
     let item = [];
 
     const {
@@ -28,29 +32,47 @@ function Products() {
 
     const { cart } = state;
 
-    const addToCart = () => {
+    const handleChange = (e) => {
+        console.log(e.target);
+        
+            if (!e.target.value.length) {
+                setErrorMessage(`${e.target.name} is required.`);
+            } else {
+                setErrorMessage('');
+            }
+        
+    };
+
+    const addToCart = (e) => {
+        e.preventDefault();
+
         var productStyle = document.getElementById("productStyle").value;
         var productColor = document.getElementById("productColor").value;
         var productSize = document.getElementById("productSize").value;
         var productText = document.getElementById("productColor").value;
         var productQty = document.getElementById("productColor").value;
-        const itemInCart = cart.find((cartItem) => cartItem._id === _id)
-        if (itemInCart) {
-            dispatch({
-                type: UPDATE_CART_QUANTITY,
-                _id: _id,
-                purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
-            });
-            idbPromise('cart', 'put', {
-                ...itemInCart,
-                purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
-            });
-        } else {
-            dispatch({
-                type: ADD_TO_CART,
-                product: { ...item, purchaseQuantity: 1 }
-            });
-            idbPromise('cart', 'put', { ...item, purchaseQuantity: 1 });
+        
+        if (!productStyle && !productColor && !productSize && !productQty){
+            
+        }else {
+            const itemInCart = cart.find((cartItem) => cartItem._id === _id)
+            if (itemInCart) {
+                dispatch({
+                    type: UPDATE_CART_QUANTITY,
+                    _id: _id,
+                    purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
+                });
+                idbPromise('cart', 'put', {
+                    ...itemInCart,
+                    purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
+                });
+            } else {
+                dispatch({
+                    type: ADD_TO_CART,
+                    product: { ...item, purchaseQuantity: 1 }
+                });
+                idbPromise('cart', 'put', { ...item, purchaseQuantity: 1 });
+            }
         }
     }
 
@@ -91,7 +113,7 @@ function Products() {
                         <div className="product-options">
                             <div className="product-options-label">Style</div>
                             {/* Need something for {product}-style */}
-                            <select className="select-styling" id='productStyle'>
+                            <select htmlFor='style' className="select-styling" id='productStyle' name='style' onBlur={handleChange}>
                                 <option value=""> Select one:</option>
                                 <option value="Men's"> Men's</option>
                                 <option value="Women's"> Women's</option>
@@ -101,7 +123,7 @@ function Products() {
                         <div className="product-options">
                             {/* Need something for {product}-color */}
                             <div className="product-options-label">Color</div>
-                            <select className="select-styling" id='productColor'>
+                            <select className="select-styling" id='productColor' name='color' onBlur={handleChange}>
                                 <option value=""> Select one:</option>
                                 <option value="Navy"> Navy</option>
                                 <option value="Olive Green"> Olive Green</option>
@@ -116,7 +138,7 @@ function Products() {
                         <div className="product-options">
                             {/* Need something for {product}-size */}
                             <div className="product-options-label">Size</div>
-                            <select className="select-styling" id='productSize'>
+                            <select className="select-styling" id='productSize' name='size' onBlur={handleChange}>
                                 <option value=""> Select one:</option>
                                 <option value="XS"> XS</option>
                                 <option value="S"> S</option>
@@ -130,22 +152,29 @@ function Products() {
 
                     <div className="second-product-container">
                         <div className="product-options-text-container">
-                            <label className="product-options-label">Text for Shirt</label>
+                            <label className="product-options-label" htmlFor="text">Text for Shirt</label>
                             <input className="product-input" id="productText" />
                             {/* <input className="product-input" id="{product}-text" /> */}
                         </div>
 
                         <div>
-                            <label className="product-options-label">Quantity</label>
-                            <input className="product-input" type="number" min="0" step="1" id="productQty" />
+                            <label className="product-options-label" htmlFor="qty">Quantity</label>
+                            <input className="product-input" type="number" min="0" step="1" id="productQty" name='QTY' onBlur={handleChange}/>
                             {/* need err if number is not positive, or change to a select option, versus text area */}
                             {/* <input className="product-input" id="product-quantity" /> */}
                         </div>
 
                     </div>
 
+                    {
+                        errorMessage ? <div>
+                            <p className="error-message">{errorMessage}</p>
+                        </div> : null
+                    }
                     <div className="third-product-container">
                         <div className="product-price">Price: <span id="product-price">${price}</span></div>
+
+                        
 
                         <div className="button-row">
                             <button className="btn" type="submit" onClick={addToCart}>Add To Cart</button>
