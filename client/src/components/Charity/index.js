@@ -38,7 +38,6 @@ function Charity() {
     }
 
     if (!donationLoading && !orderLoading) {
-      console.log(orderData);
       // loop to get total amount spent through orders
       for (let i = 0; i < orderData.orders.length; i++) {
         let products = orderData.orders[i].products;

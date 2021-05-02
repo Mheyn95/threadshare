@@ -22,8 +22,9 @@ export const ADD_PRODUCT = gql`
     $color: String!
     $customText: String!
     $size: String!
-    $quantity: Number!
-    &price: Number!
+    $quantity: Int!
+    $price: Int!
+    $category: String!
   ) {
     addProduct(
       style: $style
@@ -32,10 +33,9 @@ export const ADD_PRODUCT = gql`
       size: $size
       quantity: $quantity
       price: $price
+      category: $category
     ) {
-      product {
-        _id
-      }
+      _id
     }
   }
 `;
