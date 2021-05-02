@@ -47,13 +47,13 @@ function Products() {
     let productQty = document.getElementById("productQty").value;
 
     let item = {
-      category: product,
-      customText: productText,
       style: productStyle,
       color: productColor,
+      customText: productText,
       size: productSize,
-      quantity: productQty,
-      price: price,
+      quantity: parseInt(productQty),
+      price: parseInt(price),
+      category: product,
     };
 
     const mutationResponse = await addProduct({
@@ -74,26 +74,23 @@ function Products() {
       setErrorMessage(`Please fill out all fields`);
     } else {
       const _id = mutationResponse.data.addProduct._id;
+      let item = {
+        style: productStyle,
+        color: productColor,
+        customText: productText,
+        size: productSize,
+        quantity: parseInt(productQty),
+        price: parseInt(price),
+        category: product,
+        _id: _id,
+      };
       console.log(_id);
-      const itemInCart = cart.find((item) => item._id === _id);
-      console.log(item);
-      if (itemInCart) {
-        dispatch({
-          type: UPDATE_CART_QUANTITY,
-          _id: _id,
-          purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
-        });
-        idbPromise("cart", "put", {
-          ...itemInCart,
-          purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
-        });
-      } else {
-        dispatch({
-          type: ADD_TO_CART,
-          product: { ...item, purchaseQuantity: 1 },
-        });
-        idbPromise("cart", "put", { ...item, purchaseQuantity: 1 });
-      }
+      console.log({ ...item });
+      dispatch({
+        type: ADD_TO_CART,
+        product: { item },
+      });
+      idbPromise("cart", "put", { ...item });
     }
   };
 
