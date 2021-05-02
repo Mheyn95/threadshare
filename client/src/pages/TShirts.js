@@ -14,14 +14,14 @@ function TShirts() {
     const state = useSelector(state => state);
     // find out where you can pull that info into the 
 
-    // const {
-    //     _id,
-    //     customText,
-    //     style,
-    //     color,
-    //     size,
-    //     quantity,
-    // } = item;
+    const {
+        _id,
+        customText,
+        style,
+        color,
+        size,
+        quantity,
+    } = item;
 
     const { cart } = state;
 

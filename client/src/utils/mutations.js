@@ -23,6 +23,7 @@ export const ADD_PRODUCT = gql`
     $customText: String!
     $size: String!
     $quantity: Number!
+    $price: Number!
   ) {
     addProduct(
       style: $style
@@ -30,6 +31,7 @@ export const ADD_PRODUCT = gql`
       customText: $customText
       size: $size
       quantity: $quantity
+      price: $price
     ) {
       product {
         _id
@@ -39,6 +41,7 @@ export const ADD_PRODUCT = gql`
 `;
 
 // add order - FINISH CODE
+// add category, style, color, size, customText, quanity, price to add_order
 export const ADD_ORDER = gql`
   mutation addOrder($products: [ID]!) {
     addOrder(products: $products) {
