@@ -96,9 +96,6 @@ const Cart = () => {
                 </div>
             ) : (
                 <h3 className="nothing-cart">
-                    {/* <span role="img" aria-label="shocked">
-                        😱
-                </span> */}
                 Empty
                 </h3>
             )}

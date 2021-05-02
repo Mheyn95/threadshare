@@ -61,11 +61,9 @@ function Products() {
         // color = productColor;
         // size = productSize;
         // quantity = productQty;
-        alert(item.color);
+        // alert(item.color);
         
 
-    
-        
         if (!productStyle || !productColor || !productSize || !productQty){
             console.log("Need to have all categories");
             // Style error message
@@ -129,7 +127,7 @@ function Products() {
                 <form>
                     <div className="first-product-container">
                         <div className="product-options">
-                            <div className="product-options-label product-bold">Style</div>
+                            <div className="product-bold product-options-label">Style</div>
                             {/* Need something for {product}-style */}
                             <select htmlFor='style' className="select-styling" id='productStyle' name='style' onBlur={handleChange}>
                                 <option value=""> Select one:</option>
@@ -140,7 +138,7 @@ function Products() {
                         
                         <div className="product-options">
                             {/* Need something for {product}-color */}
-                            <div className="product-options-label product-bold">Color</div>
+                            <div className="product-bold product-options-label">Color</div>
                             <select className="select-styling" id='productColor' name='color' onBlur={handleChange}>
                                 <option value=""> Select one:</option>
                                 <option value="Navy"> Navy</option>
@@ -155,7 +153,7 @@ function Products() {
 
                         <div className="product-options">
                             {/* Need something for {product}-size */}
-                            <div className="product-options-label product-bold">Size</div>
+                            <div className="product-bold product-options-label">Size</div>
                             <select className="select-styling" id='productSize' name='size' onBlur={handleChange}>
                                 <option value=""> Select one:</option>
                                 <option value="XS"> XS</option>
@@ -176,7 +174,7 @@ function Products() {
                         </div>
 
                         <div>
-                            <label className="product-options-label product-bold" htmlFor="qty">Quantity</label>
+                            <label className="product-bold product-options-label" htmlFor="qty">Quantity</label>
                             <input className="product-input" type="number" min="0" step="1" id="productQty" name='QTY' onBlur={handleChange}/>
                             {/* need err if number is not positive, or change to a select option, versus text area */}
                             {/* <input className="product-input" id="product-quantity" /> */}
@@ -184,8 +182,8 @@ function Products() {
 
                     </div>
                     {/* Need to style */}
-                    <div>
-                        Please fill out all ___ fields. 
+                    <div className ="form-fields-comment">
+                        Please fill out all bold fields.  
                     </div>
 
                     {
@@ -200,8 +198,7 @@ function Products() {
 
                         <div className="button-row">
                             <button className="btn" type="submit" onClick={addToCart}>Add To Cart</button>
-                            {/* <button className="btn" type="submit" onClick={addToCart}>Add To Cart</button> */}
-                        
+                                                   
                         {/* Need validation that all fields are filled out */}
                         </div>
                     </div>

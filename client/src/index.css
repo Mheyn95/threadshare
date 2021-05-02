@@ -360,6 +360,13 @@ input {
   padding: 5px;
   border-radius: 5px;
 }
+.form-fields-comment {
+    padding-top: 10px;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
 
 .product-options-text-container {
   text-align: center;
