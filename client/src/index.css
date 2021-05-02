@@ -322,7 +322,11 @@ input {
 }
 
 .product-bold {
-    font-weight: bold;
+    font-weight: 700;
+    color: var(--teal-color);
+}
+.not-bold {
+  font-weight: 700;
 }
 
 .product-img {
@@ -360,7 +364,7 @@ input {
   padding: 5px;
   border-radius: 5px;
 }
-.form-fields-comment {
+.form-fill-message {
     padding-top: 10px;
     text-align: center;
     display: flex;
