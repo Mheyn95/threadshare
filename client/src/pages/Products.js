@@ -5,11 +5,12 @@ import hoodieImage from '../assets/hoodieImage.jpg'
 import jacketImage from '../assets/jacketImage.jpg'
 
 import { useDispatch, useSelector } from "react-redux";
+import { useQuery, useMutation } from "@apollo/react-hooks";
 
 import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../utils/actions";
 import { idbPromise } from "../utils/helpers";
 
-import {QUERY_PRODUCT} from "../utils/queries";
+import { ADD_PRODUCT } from "../utils/mutations";
 
 function Products() {
 
@@ -33,8 +34,15 @@ function Products() {
         
     };
 
+    const addProductFun = () => {
+        const [addProduct] = useMutation(ADD_PRODUCT);
+    }
+
     const addToCart = (e) => {
         e.preventDefault();
+
+        let _id = 1;
+        
 
         var productStyle = document.getElementById("productStyle").value;
         var productColor = document.getElementById("productColor").value;
@@ -47,13 +55,14 @@ function Products() {
 
 
         let item = {
-            // _id,
+            _id: 1,
             category: product,
             customText: productText,
             style: productStyle,
-            color:productColor,
-            size:productSize,
+            color: productColor,
+            size: productSize,
             quantity:productQty,
+            price: price,
         };
 
         // customText = productText;
@@ -70,8 +79,10 @@ function Products() {
             setErrorMessage(`Please fill out all fields`);
             
         }else {
+            // _id++;
             const itemInCart = cart.find((item) => item._id === _id);
             console.log(item);
+            console.log(_id);
             if (itemInCart) {
                 dispatch({
                     type: UPDATE_CART_QUANTITY,
