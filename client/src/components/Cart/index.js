@@ -17,10 +17,14 @@ const Cart = () => {
     const state = useSelector(state => state);
 
     const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
+    console.log("data");
+    console.log(data);
 
 
     useEffect(() => {
         if (data) {
+            console.log("data");
+            console.log(data);
             stripePromise.then((res) => {
                 res.redirectToCheckout({ sessionId: data.checkout.session })
             })
@@ -44,7 +48,7 @@ const Cart = () => {
     function calculateTotal() {
         let sum = 0;
         state.cart.forEach(item => {
-            sum += item.price * item.purchaseQuantity;
+            sum += item.item.quantity * item.item.price;
         });
         return sum.toFixed(2);
     }
@@ -53,10 +57,11 @@ const Cart = () => {
         const productIds = [];
 
         state.cart.forEach((item) => {
-            for (let i = 0; i < item.purchaseQuantity; i++) {
-                productIds.push(item._id);
+            for (let i = 0; i < item.item.quantity; i++) {
+                productIds.push(item.item._id);
             }
         });
+        console.log(productIds);
 
         getCheckout({
             variables: { products: productIds }
@@ -66,50 +71,42 @@ const Cart = () => {
     if (!state.cartOpen) {
         return (
             <div className="top-nav-item cart-closed" onClick={toggleCart}>
-                    <i class="fa fa-shopping-cart cart-color"></i>
+                    <i className="fa fa-shopping-cart cart-color"></i>
             </div>
         );
     }
 
     return (
         <div className="cart">
-            <div className="close" onClick={toggleCart}>X</div>
-            <h2>Cart</h2>
+            <div className="cart-header">
+                <div className="close" onClick={toggleCart}>X</div>
+                <h2>Cart</h2>
+            </div>
+            
             {state.cart.length ? (
                 <div>
                     {state.cart.map(item => (
                         <CartItem key={item._id} item={item} />
                     ))}
 
-                    <div className="flex-row space-between">
-                        <strong>Total: ${calculateTotal()}</strong>
+                    <div className="cart-total-container">
+                        <strong className="cart-total">Total: ${calculateTotal()}</strong>
 
-                        {
-                            Auth.loggedIn() ?
-                                <button onClick={submitCheckout}>
-                                    Checkout
-                      </button>
-                                :
-                                <span>(log in to check out)</span>
+                        {Auth.loggedIn() ?
+                            <button className="checkout-btn" onClick={submitCheckout}>Checkout</button>
+                            :
+                            <span>(log in to check out)</span>
                         }
                     </div>
                 </div>
             ) : (
                 <h3 className="nothing-cart">
-                    {/* <span role="img" aria-label="shocked">
-                        😱
-                </span> */}
-                Empty
+                Cart is Empty
                 </h3>
             )}
         </div>
 
     );
 };
-
-
-// function Cart() {
-//     return true;
-// }
 
 export default Cart;

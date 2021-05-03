@@ -17,12 +17,12 @@ function Welcome(props) {
                     Start Customizing Today!</h2>
                 ) : null}
             </div>
-            <div>
+            {/* <div>
                 {Auth.loggedIn() && userData ? (
                     <h2>Order history for {userData.user.firstName}</h2>
                     
                 ) : null}
-            </div>
+            </div> */}
         </div>
         
   );

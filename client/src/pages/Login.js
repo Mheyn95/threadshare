@@ -3,7 +3,7 @@ import { useMutation } from "@apollo/react-hooks";
 import { Link } from "react-router-dom";
 import { LOGIN } from "../utils/mutations";
 import Auth from "../utils/auth";
-import SharImage from "../assets/share.jpg";
+import ShareImage from "../assets/share.jpg";
 
 function Login(props) {
     const [formState, setFormState] = useState({ email: "", password: "" });
@@ -66,13 +66,13 @@ function Login(props) {
                     }
                     <div className='button-row'>
                         <button className='btn btn-spacing' type="submit">Submit</button>
-                        <button className='btn btn-spacing' type="newUser">New User</button>
+                        <button className='btn btn-spacing' type="newUser" onClick={event =>  window.location.href='/signup'}>New User</button>
                     </div>
                 </form>
             </div>
 
             <div>
-                <img className="home-image" src={SharImage} alt="hands holding flower" />
+                <img className="home-image" src={ShareImage} alt="hands holding flower" />
             </div>
         </div>
         

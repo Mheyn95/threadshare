@@ -14,11 +14,11 @@ function Nav() {
       </div>
       <div className="nav-bar-items">
         <ul className='top-nav-container'>
-          {Auth.loggedIn() &&
+          {/* {Auth.loggedIn() &&
             <li className='top-nav-item'>
               <Link className='top-nav-item' to="/orderHistory">Order History</Link>
             </li>
-          }
+          } */}
           {Auth.loggedIn() &&
             <li className='top-nav-item'>
               <a className='top-nav-item' href="/" onClick={() => Auth.logout()}>
