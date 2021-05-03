@@ -14,8 +14,8 @@ function ProductListNav() {
             <div className='bottom-nav-container'>
                 <ul className='bottom-nav-container'>
                     <li className='bottom-nav-item'>
-                        <Link className='bottom-nav-item-link' to="tShirts">T-Shirts</Link>
-                        <i className="fas fa-tshirt"></i>
+                        <Link className='bottom-nav-item-link' to="/tShirts">T-Shirts</Link>
+                        {/* <i className="fas fa-tshirt"></i> */}
                     </li>
                     <li className='bottom-nav-item'>
                         <Link className='bottom-nav-item-link' to="/sweatshirts">Sweatshirts</Link>

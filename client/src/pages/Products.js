@@ -28,7 +28,7 @@ function Products() {
   const { cart } = state;
 
   const handleChange = (e) => {
-    console.log(e.target);
+    // console.log(e.target);
 
     if (!e.target.value.length) {
       setErrorMessage(`${e.target.name} is required.`);
@@ -84,8 +84,8 @@ function Products() {
         category: product,
         _id: _id,
       };
-      console.log(_id);
-      console.log({ ...item });
+      // console.log(_id);
+      // console.log({ ...item });
       dispatch({
         type: ADD_TO_CART,
         product: { item },

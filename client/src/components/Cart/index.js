@@ -17,10 +17,14 @@ const Cart = () => {
     const state = useSelector(state => state);
 
     const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
+    console.log("data");
+    console.log(data);
 
 
     useEffect(() => {
         if (data) {
+            console.log("data");
+            console.log(data);
             stripePromise.then((res) => {
                 res.redirectToCheckout({ sessionId: data.checkout.session })
             })
@@ -57,6 +61,7 @@ const Cart = () => {
                 productIds.push(item.item._id);
             }
         });
+        console.log(productIds);
 
         getCheckout({
             variables: { products: productIds }
