@@ -25,8 +25,8 @@ Storefront where you can design and customize t-shirts, hoodies, sweatshirts, an
 
 
 # Contributions
-[Dani Whitlock](www.linkedin.com/in/dani-whitlock-471297168)
-Matt Damron
-[Mitchell Hayn](https://www.linkedin.com/in/mitchellheyn/)
+* [Dani Whitlock](www.linkedin.com/in/dani-whitlock-471297168)
+* Matt Damron
+* [Mitchell Hayn](https://www.linkedin.com/in/mitchellheyn/)
 
 ###  ©️2021 
