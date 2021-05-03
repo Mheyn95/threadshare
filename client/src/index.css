@@ -16,6 +16,7 @@
   --gray-color: rgb(189, 189, 189);
   /* --accent-color: rgb(166, 247, 253); */
   --accent-color: rgb(254, 212, 11);
+  --accent2-color: rgb(253, 240, 171);
 }
 
 /* top nav bar */
@@ -146,17 +147,6 @@ a {
   font-size: 2rem;
 }
 
-.donate-now {
-  float: right;
-  border-radius: 5px;
-  padding: 10px;
-  background-color: var(--accent-color);
-  color: black;
-  text-transform: uppercase;
-  font-weight: 500;
-  font-size: 1rem;
-  border: none;
-}
 
 .donate-now:hover {
   background-color: var(--teal-color);
@@ -202,6 +192,10 @@ form {
   font-weight: 100;
   font-style: italic;
   color: var(--teal-color);
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  text-transform: uppercase;
 }
 
 label {
@@ -321,10 +315,7 @@ input {
   color: var(--teal-color);
 }
 
-.product-bold {
-    font-weight: 700;
-    color: var(--teal-color);
-}
+
 .not-bold {
   font-weight: 700;
 }
@@ -354,22 +345,39 @@ input {
   /* padding: 5px; */
 }
 
+
 .product-options-label {
+  padding: 5px;
+  font-weight: 700;
+  text-align: center;
+  border: none;
+  display: flex;
+  justify-content: center;
+}
+.product-options-label-text {
   padding: 5px;
   font-weight: 500;
   text-align: center;
+  border: none;
+  display: flex;
+  justify-content: center;
 }
 
 .product-options select {
   padding: 5px;
   border-radius: 5px;
+  display: flex;
+  justify-content: center;
 }
 .form-fill-message {
-    padding-top: 10px;
+    padding-top: 20px;
     text-align: center;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    font-style: italic;
+    color: var(--teal-color);
+    font-weight: 500;
 }
 
 .product-options-text-container {
@@ -412,6 +420,18 @@ input {
   padding: 15px;
   font-weight: 400;
   font-size: 1.8rem;
+}
+
+/* cart item */
+
+.cart-item-category {
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.cart-item-details {
+  font-weight: 300;
+  font-style: italic;
+  padding-left: 10px;
 }
 
 @media only screen and (max-width: 640px) {

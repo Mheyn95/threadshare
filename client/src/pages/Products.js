@@ -130,8 +130,7 @@ function Products() {
         <form>
           <div className="first-product-container">
             <div className="product-options">
-              <div className="product-options-label product-bold">Style</div>
-              {/* Need something for {product}-style */}
+              <div className="product-options-label">Style</div>
               <select
                 htmlFor="style"
                 className="select-styling"
@@ -146,8 +145,7 @@ function Products() {
             </div>
 
             <div className="product-options">
-              {/* Need something for {product}-color */}
-              <div className="product-options-label product-bold">Color</div>
+              <div className="product-options-label">Color</div>
               <select
                 className="select-styling"
                 id="productColor"
@@ -166,8 +164,7 @@ function Products() {
             </div>
 
             <div className="product-options">
-              {/* Need something for {product}-size */}
-              <div className="product-options-label product-bold">Size</div>
+              <div className="product-options-label">Size</div>
               <select
                 className="select-styling"
                 id="productSize"
@@ -186,36 +183,20 @@ function Products() {
           </div>
 
           <div className="second-product-container">
-            <div className="product-options-text-container">
-              <label className="product-options-label" htmlFor="text">
-                Text for Shirt
-              </label>
+            <div className="product-options">
+              <label className="product-options-label-text" htmlFor="text">Text for Shirt</label>
               <input className="product-input" id="productText" />
-              {/* <input className="product-input" id="{product}-text" /> */}
             </div>
 
-            <div>
-              <label
-                className="product-options-label product-bold"
-                htmlFor="qty"
-              >
-                Quantity
-              </label>
-              <input
-                className="product-input"
-                type="number"
-                min="0"
-                step="1"
-                id="productQty"
-                name="QTY"
-                onBlur={handleChange}
-              />
-              {/* need err if number is not positive, or change to a select option, versus text area */}
-              {/* <input className="product-input" id="product-quantity" /> */}
+            <div  className="product-options">
+              <label className="product-options-label" htmlFor="qty">Quantity</label>
+              <input className="product-input" type="number" min="0" step="1" id="productQty" name="QTY" onBlur={handleChange} />
             </div>
           </div>
-          {/* Need to style */}
-          <div>Please fill out all ___ fields.</div>
+
+          <div className="form-fill-message">
+            All bolded fields are required.
+          </div>
 
           {errorMessage ? (
             <div>

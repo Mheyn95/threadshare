@@ -1,8 +1,4 @@
-// mitchell put in mutations
-import { GraphQLString } from "graphql";
 import gql from "graphql-tag";
-
-// what am I going to put in, what am I spitting out
 
 export const LOGIN = gql`
   mutation login($email: String!, $password: String!) {
@@ -15,7 +11,6 @@ export const LOGIN = gql`
   }
 `;
 
-// double check after playground
 export const ADD_PRODUCT = gql`
   mutation addProduct(
     $style: String!
@@ -40,7 +35,6 @@ export const ADD_PRODUCT = gql`
   }
 `;
 
-// add order - FINISH CODE
 export const ADD_ORDER = gql`
   mutation addOrder($products: [ID]!) {
     addOrder(products: $products) {

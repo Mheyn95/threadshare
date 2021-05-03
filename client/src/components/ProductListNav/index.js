@@ -19,15 +19,15 @@ function ProductListNav() {
                     </li>
                     <li className='bottom-nav-item'>
                         <Link className='bottom-nav-item-link' to="/sweatshirts">Sweatshirts</Link>
-                        <img></img>
+                        
                     </li>
                     <li className='bottom-nav-item'>
                         <Link className='bottom-nav-item-link' to="/hoodies">Hoodies</Link>
-                        <img></img>
+                        
                     </li>
                     <li className='bottom-nav-item'>
                         <Link className='bottom-nav-item-link' to="/jackets">Jackets</Link>
-                        <img></img>
+                      
                     </li>
                 </ul>
             </div>
